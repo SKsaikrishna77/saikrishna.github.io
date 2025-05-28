@@ -1,3 +1,6 @@
+<?php 
+include ('main.php');
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -772,6 +775,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
 										</div>
 									</form>
+									<?php 
+									
+									if(isset($_SESSION['status'])){
+										echo $_SESSION['status'];
+										unset ($_SESSION['status']);
+									}
+									
+									?>
+									
 								</div>
 								
 							</div>
