@@ -755,7 +755,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
-									<form action="main.php" method="POST">
+									<form action="form" id="myForm" method="POST">
 										<div class="form-group">
 											<input type="text" class="form-control" name="name" placeholder="Name">
 										</div>
@@ -802,6 +802,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+	<script>
+const form = document.getElementById('myForm');
+const formURL = 'https://docs.google.com/spreadsheets/d/1oZhbFKB2s_W7inYrrViSfhTb8EI-jPxjk70Km9fo-4Y/edit?usp=drivesdk';
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(form);
+  
+  fetch(formURL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    alert('Form submitted successfully!');
+    form.reset();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+		
+	</script>
 
 	</body>
 </html>
